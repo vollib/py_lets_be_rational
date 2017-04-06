@@ -1,0 +1,2 @@
+lets_be_rational==1.0.9
+pytest==3.0.7
