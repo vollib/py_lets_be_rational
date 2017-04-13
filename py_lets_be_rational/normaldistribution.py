@@ -36,9 +36,9 @@ merchantability, fitness for a particular purpose, or non-infringement.
 # the hardware (or compiler implementation) accuracy of exp(-x²/2) which is not reliably more than 14 digits when
 # x becomes large. Still, we should switch to the asymptotic only when it is beneficial to do so.
 from __future__ import division
-from numba import jit
 from math import fabs, sqrt, exp, log
 
+from py_lets_be_rational.numba_helper import maybe_jit
 from py_lets_be_rational.constants import DBL_MAX
 from py_lets_be_rational.constants import DBL_EPSILON
 from py_lets_be_rational.constants import ONE_OVER_SQRT_TWO_PI
@@ -110,12 +110,12 @@ F6 = 1.42151175831644588870E-7
 F7 = 2.04426310338993978564E-15
 
 
-@jit(cache=True, nopython=True, nogil=True)
+@maybe_jit(cache=True, nopython=True, nogil=True)
 def norm_pdf(x):
     return ONE_OVER_SQRT_TWO_PI * exp(-.5 * x * x)
 
 
-@jit(cache=True)
+@maybe_jit(cache=True)
 def norm_cdf(z):
     if z <= norm_cdf_asymptotic_expansion_first_threshold:
         # Asymptotic expansion for very negative z following (26.2.12) on page 408
@@ -150,7 +150,7 @@ def norm_cdf(z):
     return 0.5 * erfc_cody(-z * ONE_OVER_SQRT_TWO)
 
 
-@jit(cache=True, nopython=True, nogil=True)
+@maybe_jit(cache=True, nopython=True, nogil=True)
 def inverse_norm_cdf(u):
     #
     # ALGORITHM AS241  APPL. STATIST. (1988) VOL. 37, NO. 3

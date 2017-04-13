@@ -29,10 +29,11 @@ merchantability, fitness for a particular purpose, or non-infringement.
 
 from __future__ import division
 from math import floor, fabs, exp
-from numba import jit
+
+from py_lets_be_rational.numba_helper import maybe_jit
 
 
-@jit(cache=True, nopython=True, nogil=True)
+@maybe_jit(cache=True, nopython=True, nogil=True)
 def d_int(x):
     return floor(x) if x > 0 else -floor(-x)
 
@@ -84,7 +85,7 @@ XMAX = 2.53e307
 
 
 # <       SUBROUTINE CALERF(ARG,RESULT,JINT) >
-@jit(cache=True)
+@maybe_jit(cache=True)
 def calerf(x, jint):
     # ------------------------------------------------------------------
     # This packet evaluates  erf(x),  erfc(x),  and  exp(x*x)*erfc(x)
@@ -338,7 +339,7 @@ def calerf(x, jint):
     # calerf_
 
 
-@jit(cache=True, nopython=True, nogil=True)
+@maybe_jit(cache=True, nopython=True, nogil=True)
 def fix_up_for_negative_argument_erf_etc(jint, result, x):
     # ------------------------------------------------------------------
     #  Fix up for negative argument, erf, etc.
@@ -381,7 +382,7 @@ def fix_up_for_negative_argument_erf_etc(jint, result, x):
                 # <       END IF >
     return result
 
-@jit(cache=True)
+@maybe_jit(cache=True)
 def erf_cody(x):
     #  --------------------------------------------------------------------
     #  This subprogram computes approximate values for erf(x).
@@ -403,7 +404,7 @@ def erf_cody(x):
     #  derf_
 
 
-@jit(cache=True)
+@maybe_jit(cache=True)
 def erfc_cody(x):
     # --------------------------------------------------------------------
     # This subprogram computes approximate values for erfc(x).
@@ -424,7 +425,7 @@ def erfc_cody(x):
     # <       END >
 
 
-@jit(cache=True)
+@maybe_jit(cache=True)
 def erfcx_cody(x):
     # ------------------------------------------------------------------
     # This subprogram computes approximate values for exp(x*x) * erfc(x).

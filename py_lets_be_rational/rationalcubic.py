@@ -35,8 +35,8 @@ merchantability, fitness for a particular purpose, or non-infringement.
 #
 from __future__ import division
 from math import fabs, sqrt
-from numba import jit
 
+from py_lets_be_rational.numba_helper import maybe_jit
 from py_lets_be_rational.constants import DBL_EPSILON
 from py_lets_be_rational.constants import DBL_MIN
 from py_lets_be_rational.constants import DBL_MAX
@@ -46,12 +46,12 @@ minimum_rational_cubic_control_parameter_value = -(1 - sqrt(DBL_EPSILON))
 maximum_rational_cubic_control_parameter_value = 2 / (DBL_EPSILON * DBL_EPSILON)
 
 
-@jit(cache=True, nopython=True, nogil=True)
+@maybe_jit(cache=True, nopython=True, nogil=True)
 def _is_zero(x):
     return fabs(x) < DBL_MIN
 
 
-@jit(cache=True)
+@maybe_jit(cache=True)
 def rational_cubic_control_parameter_to_fit_second_derivative_at_left_side(
         x_l, x_r, y_l, y_r, d_l, d_r, second_derivative_l):
     """
@@ -84,7 +84,7 @@ def rational_cubic_control_parameter_to_fit_second_derivative_at_left_side(
     return numerator / denominator
 
 
-@jit(cache=True)
+@maybe_jit(cache=True)
 def minimum_rational_cubic_control_parameter(d_l, d_r, s, preferShapePreservationOverSmoothness):
     """
 
@@ -127,7 +127,7 @@ def minimum_rational_cubic_control_parameter(d_l, d_r, s, preferShapePreservatio
     return max(minimum_rational_cubic_control_parameter_value, max(r1, r2))
 
 
-@jit(cache=True)
+@maybe_jit(cache=True)
 def rational_cubic_control_parameter_to_fit_second_derivative_at_right_side(
         x_l, x_r, y_l, y_r, d_l, d_r, second_derivative_r):
     """
@@ -160,7 +160,7 @@ def rational_cubic_control_parameter_to_fit_second_derivative_at_right_side(
     return numerator / denominator
 
 
-@jit(cache=True)
+@maybe_jit(cache=True)
 def convex_rational_cubic_control_parameter_to_fit_second_derivative_at_right_side(
         x_l, x_r, y_l, y_r, d_l, d_r, second_derivative_r,
         preferShapePreservationOverSmoothness):
@@ -193,7 +193,7 @@ def convex_rational_cubic_control_parameter_to_fit_second_derivative_at_right_si
     return max(r, r_min)
 
 
-@jit(cache=True)
+@maybe_jit(cache=True)
 def rational_cubic_interpolation(x, x_l, x_r, y_l, y_r, d_l, d_r, r):
 
     """
@@ -235,7 +235,7 @@ def rational_cubic_interpolation(x, x_l, x_r, y_l, y_r, d_l, d_r, r):
     return y_r * t + y_l * (1 - t)
 
 
-@jit(cache=True)
+@maybe_jit(cache=True)
 def convex_rational_cubic_control_parameter_to_fit_second_derivative_at_left_side(
         x_l, x_r, y_l, y_r, d_l, d_r, second_derivative_l, preferShapePreservationOverSmoothness):
     """

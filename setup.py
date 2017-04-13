@@ -11,7 +11,6 @@ setup(
     maintainer_email='vollib@gammoncap.com',
     description='Pure python implementation of Peter Jaeckel\'s LetsBeRational.',
     install_requires = [
-        'numpy==1.12.1',
-        'numba==0.31.0'
+        'numpy'
     ]
 )
