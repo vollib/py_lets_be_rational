@@ -3,7 +3,7 @@
 `py_lets_be_rational` is a pure Python port of `lets_be_rational`. Below is a list of differences between the two:
 
 | Feature                                     | `py_lets_be_rational` | `lets_be_rational`         |
-| ------------------------------------------- |:---------------------:| --------------------------:|
+| ------------------------------------------- |:---------------------:|:--------------------------:|
 | Python Version Compatibility                | 2.7 and 3.x           |           2.7 only         |
 | Source Language                             | Python                | C with Python SWIG Wrapper |
 | Optional Dependencies                       | Numba                 | None                       |
