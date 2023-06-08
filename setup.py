@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name='py_lets_be_rational',
-    version='1.0.1',
+    version='1.0.2',
     packages=['py_lets_be_rational'],
     url='http://jaeckel.org',
     license='MIT',
