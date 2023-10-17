@@ -85,7 +85,7 @@ XMAX = 2.53e307
 
 
 # <       SUBROUTINE CALERF(ARG,RESULT,JINT) >
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def calerf(x, jint):
     # ------------------------------------------------------------------
     # This packet evaluates  erf(x),  erfc(x),  and  exp(x*x)*erfc(x)
@@ -382,7 +382,7 @@ def fix_up_for_negative_argument_erf_etc(jint, result, x):
                 # <       END IF >
     return result
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def erf_cody(x):
     #  --------------------------------------------------------------------
     #  This subprogram computes approximate values for erf(x).
@@ -404,7 +404,7 @@ def erf_cody(x):
     #  derf_
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def erfc_cody(x):
     # --------------------------------------------------------------------
     # This subprogram computes approximate values for erfc(x).
@@ -425,7 +425,7 @@ def erfc_cody(x):
     # <       END >
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def erfcx_cody(x):
     # ------------------------------------------------------------------
     # This subprogram computes approximate values for exp(x*x) * erfc(x).

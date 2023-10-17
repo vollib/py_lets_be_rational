@@ -61,7 +61,7 @@ def _householder_factor(newton, halley, hh3):
     return (1 + 0.5 * halley * newton) / (1 + newton * (halley + hh3 * newton / 6))
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def _compute_f_lower_map_and_first_two_derivatives(x, s):
     """
 
@@ -94,7 +94,7 @@ def _compute_f_lower_map_and_first_two_derivatives(x, s):
     return f, fp, fpp
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def _compute_f_upper_map_and_first_two_derivatives(x, s):
     """
 
@@ -130,7 +130,7 @@ def _square(x):
     return x*x
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def _inverse_f_lower_map(x, f):
     """
 
@@ -146,7 +146,7 @@ def _inverse_f_lower_map(x, f):
         x / (SQRT_THREE * inverse_norm_cdf(pow(f / (TWO_PI_OVER_SQRT_TWENTY_SEVEN * fabs(x)), 1. / 3.))))
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def _inverse_f_upper_map(f):
     """
 
@@ -173,7 +173,7 @@ def _is_below_horizon(x):
     return fabs(x) < DENORMALIZATION_CUTOFF
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def _normalized_black_call_using_norm_cdf(x, s):
     """
             b(x,s)  =  Φ(x/s+s/2)·exp(x/2)  -   Φ(x/s-s/2)·exp(-x/2)
@@ -238,7 +238,7 @@ def _asymptotic_expansion_of_normalized_black_call(h, t):
     return fabs(max(b , 0.))
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def _small_t_expansion_of_normalized_black_call(h, t):
     """
     Calculation of
@@ -275,7 +275,7 @@ def _small_t_expansion_of_normalized_black_call(h, t):
     return fabs(max(b,0.0))
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def _normalised_black_call_using_erfcx(h, t):
     """
     Given h = x/s and t = s/2, the normalised Black function can be written as
@@ -328,7 +328,7 @@ def _normalised_black_call_using_erfcx(h, t):
     return fabs(max(b,0.0))
 
 
-# @maybe_jit(cache=True)
+# @maybe_jit(cache=True, nopython=True)
 def _unchecked_normalised_implied_volatility_from_a_transformed_rational_guess_with_limited_iterations(beta, x, q,  N):
     """
     See http://en.wikipedia.org/wiki/Householder%27s_method for a detailed explanation of the third order Householder iteration.
@@ -578,7 +578,7 @@ def normalised_implied_volatility_from_a_transformed_rational_guess_with_limited
     return _unchecked_normalised_implied_volatility_from_a_transformed_rational_guess_with_limited_iterations(beta, x, q, N)
 
 
-# @maybe_jit(cache=True)
+# @maybe_jit(cache=True, nopython=True)
 def implied_volatility_from_a_transformed_rational_guess_with_limited_iterations(price, F, K, T, q, N):
     """
 
@@ -631,7 +631,7 @@ def normalised_implied_volatility_from_a_transformed_rational_guess(beta, x, q):
 
 
 # noinspection PyPep8Naming
-# @maybe_jit(cache=True)
+# @maybe_jit(cache=True, nopython=True)
 def implied_volatility_from_a_transformed_rational_guess(price, F, K, T, q):
     """
 
@@ -653,7 +653,7 @@ def implied_volatility_from_a_transformed_rational_guess(price, F, K, T, q):
         price, F, K, T, q, implied_volatility_maximum_iterations)
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def normalised_vega(x, s):
     """
 
@@ -694,7 +694,7 @@ def _normalised_intrinsic(x, q):
     return fabs(max((-1 if q < 0 else 1)*(b_max - one_over_b_max), 0.))
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def _normalised_intrinsic_call(x):
     """
 
@@ -707,7 +707,7 @@ def _normalised_intrinsic_call(x):
     return _normalised_intrinsic(x, 1)
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def normalised_black_call(x, s):
     """
 
@@ -744,7 +744,7 @@ def normalised_black_call(x, s):
     return _normalised_black_call_using_erfcx(x / s, 0.5 * s)
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def normalised_black(x, s, q):
     """
 
@@ -762,7 +762,7 @@ def normalised_black(x, s, q):
 
 
 # noinspection PyPep8Naming
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def black(F, K, sigma, T, q):
     """
 

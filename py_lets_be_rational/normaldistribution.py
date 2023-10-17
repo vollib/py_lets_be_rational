@@ -115,7 +115,7 @@ def norm_pdf(x):
     return ONE_OVER_SQRT_TWO_PI * exp(-.5 * x * x)
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def norm_cdf(z):
     if z <= norm_cdf_asymptotic_expansion_first_threshold:
         # Asymptotic expansion for very negative z following (26.2.12) on page 408
