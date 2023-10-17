@@ -51,7 +51,7 @@ def _is_zero(x):
     return fabs(x) < DBL_MIN
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def rational_cubic_control_parameter_to_fit_second_derivative_at_left_side(
         x_l, x_r, y_l, y_r, d_l, d_r, second_derivative_l):
     """
@@ -84,7 +84,7 @@ def rational_cubic_control_parameter_to_fit_second_derivative_at_left_side(
     return numerator / denominator
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def minimum_rational_cubic_control_parameter(d_l, d_r, s, preferShapePreservationOverSmoothness):
     """
 
@@ -127,7 +127,7 @@ def minimum_rational_cubic_control_parameter(d_l, d_r, s, preferShapePreservatio
     return max(minimum_rational_cubic_control_parameter_value, max(r1, r2))
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def rational_cubic_control_parameter_to_fit_second_derivative_at_right_side(
         x_l, x_r, y_l, y_r, d_l, d_r, second_derivative_r):
     """
@@ -160,7 +160,7 @@ def rational_cubic_control_parameter_to_fit_second_derivative_at_right_side(
     return numerator / denominator
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def convex_rational_cubic_control_parameter_to_fit_second_derivative_at_right_side(
         x_l, x_r, y_l, y_r, d_l, d_r, second_derivative_r,
         preferShapePreservationOverSmoothness):
@@ -193,7 +193,7 @@ def convex_rational_cubic_control_parameter_to_fit_second_derivative_at_right_si
     return max(r, r_min)
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def rational_cubic_interpolation(x, x_l, x_r, y_l, y_r, d_l, d_r, r):
 
     """
@@ -235,7 +235,7 @@ def rational_cubic_interpolation(x, x_l, x_r, y_l, y_r, d_l, d_r, r):
     return y_r * t + y_l * (1 - t)
 
 
-@maybe_jit(cache=True)
+@maybe_jit(cache=True, nopython=True)
 def convex_rational_cubic_control_parameter_to_fit_second_derivative_at_left_side(
         x_l, x_r, y_l, y_r, d_l, d_r, second_derivative_l, preferShapePreservationOverSmoothness):
     """
