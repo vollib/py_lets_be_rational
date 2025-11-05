@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lets_be_rational"
+version = "1.0.3"
+description = "Pure python implementation of Peter Jaeckel's LetsBeRational."
+readme = "README.md"
+requires-python = ">=2.7"
+license = {text = "MIT"}
+maintainers = [
+    {name = "vollib", email = "vollib@gammoncap.com"}
+]
+dependencies = [
+    "numpy"
+]
+
+[project.urls]
+Homepage = "http://jaeckel.org"
+
+[tool.setuptools]
+packages = ["lets_be_rational", "py_lets_be_rational"]

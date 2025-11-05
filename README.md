@@ -1,6 +1,34 @@
 # Overview
 
-`py_lets_be_rational` is a pure Python port of `lets_be_rational`. Below is a list of differences between the two:
+`lets_be_rational` (also available as `py_lets_be_rational` for backward compatibility) is a pure Python port of the original C implementation of Peter Jäckel's "Let's Be Rational" algorithm for implied volatility calculation.
+
+## Installation
+
+Install via pip:
+
+```bash
+pip install lets_be_rational
+```
+
+## Usage
+
+```python
+import lets_be_rational
+
+# Calculate Black option price
+price = lets_be_rational.black(F=100, K=100, sigma=0.2, T=0.5, q=1)
+
+# Calculate implied volatility
+iv = lets_be_rational.implied_volatility_from_a_transformed_rational_guess(
+    price=5.637, F=100, K=100, T=0.5, q=1
+)
+```
+
+**Note:** For backward compatibility, you can also use `import py_lets_be_rational`. Both package names are available.
+
+## Comparison
+
+Below is a list of differences between `lets_be_rational` (this Python implementation) and the original C `lets_be_rational`:
 
 | Feature                                     | `py_lets_be_rational` | `lets_be_rational`         |
 | ------------------------------------------- |:---------------------:|:--------------------------:|
