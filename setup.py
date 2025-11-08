@@ -11,6 +11,7 @@ setup(
     maintainer_email='vollib@gammoncap.com',
     description='Pure python implementation of Peter Jaeckel\'s LetsBeRational.',
     install_requires = [
-        'numpy'
+        'numpy',
+        'rationalcubic'
     ]
 )
