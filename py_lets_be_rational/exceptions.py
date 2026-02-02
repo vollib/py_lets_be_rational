@@ -42,13 +42,13 @@ class VolatilityValueException(Exception):
 
 class BelowIntrinsicException(VolatilityValueException):
     def __init__(self):
-        VolatilityValueException.__init__(self, "The volatility is below the intrinsic value.",
+        VolatilityValueException.__init__(self, "The price is below the intrinsic value.",
                                                        constants.VOLATILITY_VALUE_TO_SIGNAL_PRICE_IS_BELOW_INTRINSIC)
 
 
 class AboveMaximumException(VolatilityValueException):
     def __init__(self):
-        VolatilityValueException.__init__(self, "The volatility is above the maximum value.",
+        VolatilityValueException.__init__(self, "The price is above the maximum value.",
                                                        constants.VOLATILITY_VALUE_TO_SIGNAL_PRICE_IS_ABOVE_MAXIMUM)
 
 
