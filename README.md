@@ -1,30 +1,23 @@
 # Overview
 
-`py_lets_be_rational` is a pure Python port of `lets_be_rational`. Below is a list of differences between the two:
-
-| Feature                                     | `py_lets_be_rational` | `lets_be_rational`         |
-| ------------------------------------------- |:---------------------:|:--------------------------:|
-| Python Version Compatibility                | 2.7 and 3.x           |           2.7 only         |
-| Source Language                             | Python                | C with Python SWIG Wrapper |
-| Optional Dependencies                       | Numba                 | None                       |
-| Installed Automatically by `pip` as part of | py_vollib             | vollib                     |
+`lets_be_rational` is the canonical package for Peter Jaeckel's LetsBeRational algorithm.
+It provides a pure Python implementation and keeps the historical `py_lets_be_rational`
+import path available for compatibility.
 
 
 ## Execution Speed
-Except for their source language, `py_lets_be_rational` and `lets_be_rational` are almost identical. Each is orders of 
-magnitude faster than traditional implied volatility calculation libraries, thanks to the algorithms developed by 
-Peter Jaeckel. However, `py_lets_be_rational`, without Numba installed, is about an order of magnitude slower than 
-`lets_be_rational`. Numba helps to mitigate this speed gap considerably.
+`lets_be_rational` is orders of magnitude faster than traditional implied volatility
+calculation libraries, thanks to the algorithms developed by Peter Jaeckel.
 
 ## Numba Dependency
-Numba is an optional dependency of `py_lets_be_rational` . Because Numba installation can be tricky and OS-dependent, 
+Numba is an optional dependency. Because Numba installation can be tricky and OS-dependent, 
 we decided to leave it up to each user to decide how and whether to install Numba. If Numba is present, execution speed 
 will be faster. If not, the code will still run -- just slower.
 
 
 ## Installing numba
 
-`py_lets_be_rational` optionally depends on `numba` which in turn depends on `llvm-lite`. `llvm-lite` wants LLVM 3.9 
+`lets_be_rational` optionally depends on `numba` which in turn depends on `llvm-lite`. `llvm-lite` wants LLVM 3.9 
 being installed. On Mac OSX, use the latest version of HomeBrew to install `numba`'s dependencies as shown below:
 
 ```

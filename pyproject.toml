@@ -1,17 +1,19 @@
 [tool.poetry]
-name = "py_lets_be_rational"
-version = "1.0.3"
+name = "lets_be_rational"
+version = "1.1.0"
 description = "Pure python implementation of Peter Jaeckel's LetsBeRational."
 authors = ["vollib <vollib@gammoncap.com>"]
 license = "MIT"
 readme = "README.md"
 homepage = "http://jaeckel.org"
 repository = "https://github.com/vollib/py_lets_be_rational"
-packages = [{include = "py_lets_be_rational"}]
+packages = [{include = "py_lets_be_rational"}, {include = "lets_be_rational"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+cody-special = "^1.0.0"
 numpy = "^1.20"
+piecewise-rational = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.0"

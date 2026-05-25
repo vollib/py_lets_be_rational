@@ -34,14 +34,11 @@ from math import fabs, sqrt, log, exp
 from py_lets_be_rational.numba_helper import maybe_jit
 from py_lets_be_rational.exceptions import BelowIntrinsicException, AboveMaximumException
 
+from cody_special import inverse_norm_cdf, norm_cdf, norm_pdf
+from cody_special.erf_cody import erfcx_cody
+from piecewise_rational import *
+
 from py_lets_be_rational.constants import *
-from py_lets_be_rational.rationalcubic import *
-
-from py_lets_be_rational.erf_cody import erfcx_cody
-
-from py_lets_be_rational.normaldistribution import inverse_norm_cdf
-from py_lets_be_rational.normaldistribution import norm_cdf
-from py_lets_be_rational.normaldistribution import norm_pdf
 
 implied_volatility_maximum_iterations = 2
 asymptotic_expansion_accuracy_threshold = -10
