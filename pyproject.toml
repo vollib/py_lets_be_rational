@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lets_be_rational"
-version = "1.1.0"
+version = "1.1.1"
 description = "Pure python implementation of Peter Jaeckel's LetsBeRational."
 authors = ["vollib <vollib@gammoncap.com>"]
 license = "MIT"
@@ -12,7 +12,7 @@ packages = [{include = "py_lets_be_rational"}, {include = "lets_be_rational"}]
 [tool.poetry.dependencies]
 python = "^3.9"
 cody-special = "^1.0.0"
-numpy = "^1.20"
+numpy = ">=1.20"
 piecewise-rational = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
