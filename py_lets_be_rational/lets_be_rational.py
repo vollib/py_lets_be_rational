@@ -781,5 +781,5 @@ def black(F, K, sigma, T, q):
     intrinsic = fabs(max((K - F if q < 0 else F - K), 0.0))
     # Map in-the-money to out-of-the-money
     if q * (F - K) > 0:
-        return intrinsic + black(F, K, sigma, T, -q)
-    return max(intrinsic, (sqrt(F) * sqrt(K)) * normalised_black(log(F / K), sigma * sqrt(T), q))
+        q = -q
+    return intrinsic + max(0.0, (sqrt(F) * sqrt(K)) * normalised_black(log(F / K), sigma * sqrt(T), q))

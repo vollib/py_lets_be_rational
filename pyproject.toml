@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lets_be_rational"
-version = "1.1.1"
+version = "1.1.2"
 description = "Pure python implementation of Peter Jaeckel's LetsBeRational."
 authors = ["vollib <vollib@gammoncap.com>"]
 license = "MIT"

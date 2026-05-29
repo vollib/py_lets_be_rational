@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='lets_be_rational',
-    version='1.1.1',
+    version='1.1.2',
     packages=find_packages(),
     url='http://jaeckel.org',
     license='MIT',
